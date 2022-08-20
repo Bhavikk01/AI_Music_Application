@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
             title: Text(
               'AI Power music',
                 style: GoogleFonts.poppins(
-                  fontSize: 100,
+                  fontSize: 20,
                   color: Colors.white
                 ),
             ),
