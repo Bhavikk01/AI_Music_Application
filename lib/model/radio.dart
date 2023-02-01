@@ -2,53 +2,53 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-class MyMusicList {
-  final List<MyMusic> musics;
-  MyMusicList({
-    required this.musics,
+class MyRadioList {
+  final List<MyRadio> radios;
+  MyRadioList({
+    required this.radios,
   });
 
-  MyMusicList copyWith({
-    required List<MyMusic> musics,
+  MyRadioList copyWith({
+    required List<MyRadio> radios,
   }) {
-    return MyMusicList(
-      musics: musics,
+    return MyRadioList(
+      radios: radios ?? this.radios,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'musics': musics.map((x) => x.toMap()).toList(),
+      'radios': radios.map((x) => x.toMap()).toList(),
     };
   }
 
-  factory MyMusicList.fromMap(Map<String, dynamic> map) {
+  factory MyRadioList.fromMap(Map<String, dynamic> map) {
 
-    return MyMusicList(
-      musics: List<MyMusic>.from(map['musics']?.map((x) => MyMusic.fromMap(x))),
+    return MyRadioList(
+      radios: List<MyRadio>.from(map['musics']?.map((x) => MyRadio.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory MyMusicList.fromJson(String source) =>
-      MyMusicList.fromMap(json.decode(source));
+  factory MyRadioList.fromJson(String source) =>
+      MyRadioList.fromMap(json.decode(source));
 
   @override
-  String toString() => 'MyMusicList(radios: $musics)';
+  String toString() => 'MyRadioList(radios: $radios)';
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is MyMusicList && listEquals(o.musics, musics);
+    return o is MyRadioList && listEquals(o.radios, radios);
   }
 
   @override
-  int get hashCode => musics.hashCode;
+  int get hashCode => radios.hashCode;
 }
 
-class MyMusic {
+class MyRadio {
   final int id;
   final int order;
   final String name;
@@ -60,7 +60,7 @@ class MyMusic {
   final String icon;
   final String image;
   final String lang;
-  MyMusic({
+  MyRadio({
     required this.id,
     required this.order,
     required this.name,
@@ -74,7 +74,7 @@ class MyMusic {
     required this.lang,
   });
 
-  MyMusic copyWith({
+  MyRadio copyWith({
     required int id,
     required int order,
     required String name,
@@ -87,18 +87,18 @@ class MyMusic {
     required String image,
     required String lang,
   }) {
-    return MyMusic(
-      id: id,
-      order: order ,
-      name: name,
-      tagline: tagline,
-      color: color,
-      desc: desc,
-      url: url ,
-      category: category,
-      icon: icon,
-      image: image,
-      lang: lang,
+    return MyRadio(
+      id: id ?? this.id,
+      order: order ?? this.order,
+      name: name ?? this.name,
+      tagline: tagline ?? this.tagline,
+      color: color ?? this.color,
+      desc: desc ?? this.desc,
+      url: url ?? this.url,
+      category: category ?? this.category,
+      icon: icon ?? this.icon,
+      image: image ?? this.image,
+      lang: lang ?? this.lang,
     );
   }
 
@@ -118,9 +118,9 @@ class MyMusic {
     };
   }
 
-  factory MyMusic.fromMap(Map<String, dynamic> map) {
+  factory MyRadio.fromMap(Map<String, dynamic> map) {
 
-    return MyMusic(
+    return MyRadio(
       id: map['id'],
       order: map['order'],
       name: map['name'],
@@ -137,19 +137,19 @@ class MyMusic {
 
   String toJson() => json.encode(toMap());
 
-  factory MyMusic.fromJson(String source) =>
-      MyMusic.fromMap(json.decode(source));
+  factory MyRadio.fromJson(String source) =>
+      MyRadio.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'MyMusic(id: $id, order: $order, name: $name, tagline: $tagline, color: $color, desc: $desc, url: $url, category: $category, icon: $icon, image: $image, lang: $lang)';
+    return 'MyRadio(id: $id, order: $order, name: $name, tagline: $tagline, color: $color, desc: $desc, url: $url, category: $category, icon: $icon, image: $image, lang: $lang)';
   }
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is MyMusic &&
+    return o is MyRadio &&
         o.id == id &&
         o.order == order &&
         o.name == name &&
@@ -166,15 +166,15 @@ class MyMusic {
   @override
   int get hashCode {
     return id.hashCode ^
-    order.hashCode ^
-    name.hashCode ^
-    tagline.hashCode ^
-    color.hashCode ^
-    desc.hashCode ^
-    url.hashCode ^
-    category.hashCode ^
-    icon.hashCode ^
-    image.hashCode ^
-    lang.hashCode;
+        order.hashCode ^
+        name.hashCode ^
+        tagline.hashCode ^
+        color.hashCode ^
+        desc.hashCode ^
+        url.hashCode ^
+        category.hashCode ^
+        icon.hashCode ^
+        image.hashCode ^
+        lang.hashCode;
   }
 }
